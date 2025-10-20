@@ -2,16 +2,16 @@
 
 /* Design tokens and CSS variables */
 @theme inline {
-  /* Color palette - Brittany Chiang inspired */
-  --color-background-dark: #0a192f;
+  /* Color palette - Brittany Chiang exact colors */
+  --color-background-dark: #0f172a;
   --color-background-light: #ffffff;
-  --color-foreground-dark: #ccd6f6;
+  --color-foreground-dark: #e2e8f0;
   --color-foreground-light: #1e293b;
-  --color-accent: #64ffda;
-  --color-accent-hover: #52e5c5;
-  --color-muted: #8892b0;
-  --color-muted-light: #a8b2d1;
-  --color-border: #233554;
+  --color-accent: #5eead4;
+  --color-accent-hover: #5eead4;
+  --color-muted: #94a3b8;
+  --color-muted-light: #cbd5e1;
+  --color-border: #1e293b;
 
   /* Spacing scale (8px base) */
   --spacing-0: 0;
@@ -73,11 +73,17 @@ html {
 
 body {
   background: var(--background);
-  color: var(--foreground);
+  color: #94a3b8;
   font-family: var(--font-sans);
-  line-height: 1.6;
+  line-height: 1.625;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Selection styling to match Brittany's site */
+::selection {
+  background-color: #5eead4;
+  color: #134e4a;
 }
 
 /* Accessibility: respect reduced motion preferences */
