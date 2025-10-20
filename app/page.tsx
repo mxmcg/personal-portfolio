@@ -1,7 +1,9 @@
 import { Sidebar } from "./components/Sidebar";
+import { HeroSection } from "./components/HeroSection";
 import { AboutSection } from "./components/AboutSection";
 import { ExperienceSection } from "./components/ExperienceSection";
 import { ProjectsSection } from "./components/ProjectsSection";
+import { ContactSection } from "./components/ContactSection";
 import { SkipLink } from "./components/SkipLink";
 
 export default function Home() {
@@ -12,9 +14,11 @@ export default function Home() {
         <div className="lg:flex lg:justify-between lg:gap-4">
           <Sidebar />
           <main id="main-content" className="pt-24 lg:w-1/2 lg:py-24">
+            <HeroSection />
             <AboutSection />
             <ExperienceSection />
             <ProjectsSection />
+            <ContactSection />
           </main>
         </div>
       </div>

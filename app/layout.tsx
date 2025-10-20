@@ -57,7 +57,7 @@ export function generateViewport() {
   return {
     themeColor: [
       { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-      { media: "(prefers-color-scheme: dark)", color: "#0b1220" },
+      { media: "(prefers-color-scheme: dark)", color: "#0a192f" },
     ],
   };
 }

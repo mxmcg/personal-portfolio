@@ -2,15 +2,16 @@
 
 /* Design tokens and CSS variables */
 @theme inline {
-  /* Color palette - dark-first design */
-  --color-background-dark: #0b1220;
+  /* Color palette - Brittany Chiang inspired */
+  --color-background-dark: #0a192f;
   --color-background-light: #ffffff;
-  --color-foreground-dark: #e2e8f0;
+  --color-foreground-dark: #ccd6f6;
   --color-foreground-light: #1e293b;
-  --color-accent: #38bdf8;
-  --color-accent-hover: #0ea5e9;
-  --color-muted: #64748b;
-  --color-border: #1e293b;
+  --color-accent: #64ffda;
+  --color-accent-hover: #52e5c5;
+  --color-muted: #8892b0;
+  --color-muted-light: #a8b2d1;
+  --color-border: #233554;
 
   /* Spacing scale (8px base) */
   --spacing-0: 0;
@@ -51,11 +52,13 @@
 [data-theme="light"] {
   --background: var(--color-background-light);
   --foreground: var(--color-foreground-light);
+  --text-muted: #64748b;
 }
 
 [data-theme="dark"] {
   --background: var(--color-background-dark);
   --foreground: var(--color-foreground-dark);
+  --text-muted: var(--color-muted);
 }
 
 * {
