@@ -6,6 +6,7 @@ import { NextRequest, NextResponse } from 'next/server';
 // TODO: Add your Claude API key to .env.local
 // ANTHROPIC_API_KEY=your_api_key_here
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 interface Message {
   role: 'user' | 'assistant';
   content: string;

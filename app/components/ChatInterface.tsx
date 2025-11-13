@@ -109,7 +109,7 @@ export function ChatInterface() {
       {/* Welcome Message */}
       {!lastResponse && !isLoading && (
         <div>
-          <p className="text-sm text-slate-400 mb-3">Ask me anything about Max's work</p>
+          <p className="text-sm text-slate-400 mb-3">Ask me anything about Max&apos;s work</p>
           <div className="flex flex-wrap gap-2">
             <button
               onClick={() => handleQuickAction("Tell me about Max's projects")}

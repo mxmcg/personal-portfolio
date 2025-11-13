@@ -9,7 +9,7 @@ export default function NotFound() {
           Showcase Not Found
         </h2>
         <p className="text-muted-foreground mb-8">
-          The showcase you're looking for doesn't exist.
+          The showcase you&apos;re looking for doesn&apos;t exist.
         </p>
         <Link
           href="/showcase"
