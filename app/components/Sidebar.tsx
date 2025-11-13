@@ -46,6 +46,7 @@ export function Sidebar() {
     { id: "about", label: "About" },
     { id: "experience", label: "Experience" },
     { id: "projects", label: "Projects" },
+    { id: "skills", label: "Skills" },
   ];
 
   return (
@@ -117,13 +118,13 @@ export function Sidebar() {
           className="lg:opacity-100"
         >
           <h1 className="text-4xl font-bold tracking-tight text-slate-200 sm:text-5xl lg:leading-tight">
-            <Link href="/">Max Example</Link>
+            <Link href="/">Max McGee</Link>
           </h1>
           <h2 className="mt-2 text-lg font-medium tracking-tight text-slate-200 sm:text-xl lg:mt-1">
-            Senior Front-End Engineer
+            Senior Full Stack Engineer
           </h2>
           <p className="mt-4 max-w-xs leading-relaxed text-slate-400 lg:mt-3">
-            I build accessible, pixel-perfect digital experiences for the web.
+            Building web and mobile experiences for Fortune 500 brands and enterprise clients.
           </p>
         </motion.div>
 

@@ -26,37 +26,32 @@ const cardVariants = {
 
 const experiences = [
   {
-    period: "2021 — Present",
-    title: "Senior Front-End Engineer",
-    company: "Example Tech",
-    companyUrl: "#",
+    period: "2017 — Present",
+    title: "Senior Software Engineer",
+    company: "Valtech",
+    companyUrl: "https://www.valtech.com",
     description:
-      "Build and maintain critical components used to construct Example Tech's frontend. Work closely with cross-functional teams to implement user-facing features and improve overall user experience.",
+      "Lead full-stack development for large enterprise clients. Architect headless CMS and e-commerce platforms, manage cross-functional teams.",
     technologies: [
       "React",
-      "TypeScript",
+      "React Native",
       "Next.js",
-      "Tailwind CSS",
+      "TypeScript",
+      "Node.js",
       "GraphQL",
+      "Contentful",
+      "Contentstack",
+      "AWS",
     ],
   },
   {
-    period: "2019 — 2021",
-    title: "Front-End Developer",
-    company: "Digital Agency Co",
-    companyUrl: "#",
+    period: "2016 — 2017",
+    title: "Front End Engineer",
+    company: "Zeeto",
+    companyUrl: "https://zeeto.io/",
     description:
-      "Developed and shipped highly interactive web applications for clients including major brands. Collaborated with designers and backend engineers to deliver pixel-perfect implementations.",
-    technologies: ["JavaScript", "React", "Vue.js", "SCSS", "Node.js"],
-  },
-  {
-    period: "2016 — 2019",
-    title: "Junior Developer",
-    company: "StartupXYZ",
-    companyUrl: "#",
-    description:
-      "Started my journey in web development building features for an early-stage startup. Learned modern development practices and contributed to the company's growth from 5 to 50 employees.",
-    technologies: ["HTML", "CSS", "JavaScript", "jQuery", "WordPress"],
+      "Built React and Node.js applications for enterprise clients. Led A/B testing initiatives that increased revenue by 2–8%.",
+    technologies: ["React", "Node.js", "JavaScript", "Redux"],
   },
 ];
 
@@ -142,35 +137,6 @@ export function ExperienceSection() {
             </motion.li>
           ))}
         </motion.ol>
-        <div className="mt-12">
-          <a
-            className="inline-flex items-baseline font-medium leading-tight text-[var(--foreground)] hover:text-[var(--color-accent)] focus-visible:text-[var(--color-accent)] group/link text-base"
-            href="/resume.pdf"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="View Full Resume"
-          >
-            <span>
-              View Full{" "}
-              <span className="inline-block">
-                Resume
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                  className="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none ml-1 translate-y-px"
-                  aria-hidden="true"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </span>
-            </span>
-          </a>
-        </div>
       </div>
     </section>
   );

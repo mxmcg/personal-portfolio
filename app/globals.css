@@ -25,7 +25,9 @@
   --spacing-12: 6rem;
 
   /* Typography */
-  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+  --font-heading: var(--font-heading), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
   --font-mono: ui-monospace, "Courier New", monospace;
 
   /* Layout */
@@ -72,10 +74,17 @@ html {
 body {
   background: var(--background);
   color: #94a3b8;
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   line-height: 1.625;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Apply heading font to all headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: -0.025em;
 }
 
 /* Selection styling to match Brittany's site */

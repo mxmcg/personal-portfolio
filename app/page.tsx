@@ -1,6 +1,8 @@
 import { Sidebar } from "./components/Sidebar";
+// import { ChatInterface } from "./components/ChatInterface";
 import { AboutSection } from "./components/AboutSection";
 import { ExperienceSection } from "./components/ExperienceSection";
+import { SkillsSection } from "./components/SkillsSection";
 import { ProjectsSection } from "./components/ProjectsSection";
 import { ContactSection } from "./components/ContactSection";
 
@@ -13,6 +15,7 @@ export default function Home() {
           <aside className="lg:sticky lg:top-0 lg:flex lg:h-screen lg:w-1/2 lg:flex-col lg:justify-start lg:py-24">
             <div className="lg:pr-16">
               <Sidebar />
+              {/* <ChatInterface /> */}
             </div>
           </aside>
 
@@ -22,6 +25,7 @@ export default function Home() {
               <AboutSection />
               <ExperienceSection />
               <ProjectsSection />
+              <SkillsSection />
               <ContactSection />
             </div>
           </main>

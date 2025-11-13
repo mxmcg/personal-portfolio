@@ -1,44 +1,68 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Space_Grotesk, DM_Sans } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./components/ThemeProvider";
 import { SkipLink } from "./components/SkipLink";
 
-const inter = Inter({
+// Option 1: Space Grotesk (headings) + DM Sans (body)
+// Modern, geometric sans-serif pairing great for a dev profile
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-sans",
+  variable: "--font-heading",
 });
 
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-body",
+});
+
+// Option 2: Poppins (headings) + Open Sans (body)
+// Uncomment these and swap in the className below for a cleaner, friendlier look
+// import { Poppins, Open_Sans } from "next/font/google";
+// const poppins = Poppins({
+//   subsets: ["latin"],
+//   weight: ["400", "500", "600", "700"],
+//   display: "swap",
+//   variable: "--font-heading",
+// });
+// const openSans = Open_Sans({
+//   subsets: ["latin"],
+//   display: "swap",
+//   variable: "--font-body",
+// });
+
 export const metadata: Metadata = {
-  title: "Max Example - Front-End Engineer",
+  title: "Max McGee - Senior Full Stack Engineer",
   description:
-    "Senior front-end engineer specializing in building fast, accessible, and user-focused web applications with React, Next.js, and TypeScript.",
+    "Senior Full Stack Engineer specializing in web and mobile applications for Fortune 500 brands and enterprise clients.",
   keywords: [
-    "front-end developer",
+    "full-stack developer",
     "web developer",
     "React",
     "Next.js",
     "TypeScript",
+    "React Native",
     "portfolio",
   ],
-  authors: [{ name: "Max Example" }],
-  creator: "Max Example",
+  authors: [{ name: "Max McGee" }],
+  creator: "Max McGee",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://maxexample.com",
-    title: "Max Example - Front-End Engineer",
+    url: "https://maxmcgee.com",
+    title: "Max McGee - Senior Full Stack Engineer",
     description:
-      "Senior front-end engineer specializing in building fast, accessible, and user-focused web applications.",
-    siteName: "Max Example Portfolio",
+      "Senior Full Stack Engineer specializing in web and mobile applications for Fortune 500 brands and enterprise clients.",
+    siteName: "Max McGee Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Max Example - Front-End Engineer",
+    title: "Max McGee - Senior Full Stack Engineer",
     description:
-      "Senior front-end engineer specializing in building fast, accessible, and user-focused web applications.",
-    creator: "@maxexample",
+      "Senior Full Stack Engineer specializing in web and mobile applications for Fortune 500 brands and enterprise clients.",
+    creator: "@maxmcgee",
   },
   robots: {
     index: true,
@@ -69,7 +93,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} antialiased`}>
+      <body className={`${spaceGrotesk.variable} ${dmSans.variable} antialiased`}>
         <ThemeProvider
           attribute="data-theme"
           defaultTheme="dark"
