@@ -15,15 +15,17 @@ export function ProjectCard({ project }: ProjectCardProps) {
       whileHover={{ y: -4, scale: 1.01 }}
       transition={{ duration: 0.2 }}
     >
-      <div className="relative aspect-video overflow-hidden bg-gray-900">
-        <Image
-          src={project.image}
-          alt={`Screenshot of ${project.title}`}
-          fill
-          className="object-cover transition-transform duration-300 group-hover:scale-105"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        />
-      </div>
+      {project.image && (
+        <div className="relative aspect-video overflow-hidden bg-gray-900">
+          <Image
+            src={project.image}
+            alt={`Screenshot of ${project.title}`}
+            fill
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
+        </div>
+      )}
       <div className="p-6">
         <h3 className="text-xl font-semibold mb-2 text-[var(--foreground)]">
           {project.title}

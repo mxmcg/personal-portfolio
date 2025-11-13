@@ -3,6 +3,9 @@ export interface Project {
   title: string;
   description: string;
   techStack: string[];
+  image?: string;
+  repo?: string;
+  demo?: string;
 }
 
 export const projects: Project[] = [
