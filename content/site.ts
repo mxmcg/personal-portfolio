@@ -29,7 +29,7 @@ export const site = {
    * when the résumé is ready.
    */
   resume: {
-    label: "View résumé",
+    label: "View resume",
     href: "#",
   },
   contactCta: "Get in touch",
