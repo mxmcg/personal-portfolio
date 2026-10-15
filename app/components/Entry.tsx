@@ -1,22 +1,20 @@
 type EntryProps = {
   title: string;
   period?: string;
-  summary: string;
+  note?: string;
+  summary?: string;
   tags?: readonly string[];
-  draft?: boolean;
 };
 
-export function Entry({ title, period, summary, tags, draft }: EntryProps) {
+export function Entry({ title, period, note, summary, tags }: EntryProps) {
   return (
     <article className="entry">
       <div className="entry-top">
-        <h3>
-          {title}
-          {draft ? <span className="draft">draft</span> : null}
-        </h3>
+        <h3>{title}</h3>
         {period ? <span className="period">{period}</span> : null}
       </div>
-      <p>{summary}</p>
+      {note ? <p>{note}</p> : null}
+      {summary ? <p>{summary}</p> : null}
       {tags && tags.length > 0 ? (
         <ul className="tags">
           {tags.map((tag) => (

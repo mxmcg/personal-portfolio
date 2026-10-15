@@ -18,9 +18,9 @@ export function Experience() {
                 <Entry
                   title={entry.title}
                   period={entry.period}
+                  note={entry.note}
                   summary={entry.summary}
                   tags={entry.tags}
-                  draft={entry.draft}
                 />
               </li>
             ))}

@@ -9,13 +9,15 @@ export const navItems = [
   { href: "#contact", label: "Contact", shortLabel: "Contact" },
 ] as const;
 
+const intro =
+  "I build web and mobile products with React, React Native, and headless CMS, and lead client-facing engineering on agency teams.";
+
 export const site = {
   name: "Max McGee",
   logo: "max.mcgee",
-  role: "Senior Full Stack Engineer",
-  summary: "I build enterprise web and AI experiences for Fortune 500 brands.",
-  about:
-    "I build web and mobile applications for Fortune 500 retail brands and global enterprises, specializing in React, React Native, and headless CMS architectures. Beyond engineering, I architect solutions, manage cross-functional teams, and collaborate directly with stakeholders and clients.",
+  role: "Senior Full Stack Engineer, San Diego.",
+  summary: intro,
+  about: intro,
   photo: {
     src: "/headshot.jpg",
     alt: "Max McGee",

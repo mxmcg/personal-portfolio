@@ -1,12 +1,12 @@
-/** Experience copy. Set `draft: true` to keep the dashed badge on an entry. */
+/** Experience copy. Employers are named; client work stays anonymized. */
 
 export type ExperienceEntry = {
   id: string;
   title: string;
   period?: string;
-  summary: string;
+  note?: string;
+  summary?: string;
   tags?: readonly string[];
-  draft?: boolean;
 };
 
 export type ExperienceGroup = {
@@ -22,19 +22,12 @@ export const experience: readonly ExperienceGroup[] = [
     entries: [
       {
         id: "valtech",
-        title: "Senior Software Engineer · Valtech",
-        period: "2022 — Present",
+        title:
+          "Senior Full Stack Engineer · Valtech (formerly MJD Interactive)",
+        period: "2017 — Present",
+        note: "MJD was acquired by Valtech in 2022; I've worked with the team as a contractor and full-time.",
         summary:
-          "Lead full-stack development and architect headless CMS and e-commerce platforms for large enterprise clients.",
-        tags: [
-          "React",
-          "React Native",
-          "Next.js",
-          "TypeScript",
-          "GraphQL",
-          "Contentstack",
-          "AWS",
-        ],
+          "Lead engineering and client demos, run discovery and estimation, and manage offshore engineers.",
       },
     ],
   },
@@ -43,24 +36,9 @@ export const experience: readonly ExperienceGroup[] = [
     label: "Previously",
     entries: [
       {
-        id: "mjd",
-        title: "MJD Interactive",
-        summary: "Digital agency work for brand clients.",
-        draft: true,
-      },
-      {
-        id: "nations",
-        title: "Nations Media",
-        summary: "Web development for media and marketing clients.",
-        draft: true,
-      },
-      {
         id: "zeeto",
-        title: "Front End Engineer · Zeeto",
+        title: "Software Engineer · Zeeto",
         period: "2016 — 2017",
-        summary:
-          "Built React and Node.js applications; A/B testing lifted revenue 2–8%.",
-        tags: ["React", "Node.js", "Redux"],
       },
     ],
   },
