@@ -1,6 +1,6 @@
 import { site } from "@/content/site";
 import { ResumeLink } from "./ResumeLink";
-import { WaterPoster } from "./water/WaterPoster";
+import { WaterCanvasLoader } from "./water/WaterCanvasLoader";
 
 export function Hero() {
   const resumeIsPlaceholder = site.resume.href === "#";
@@ -23,7 +23,7 @@ export function Hero() {
           <span className="hint-coarse">Tap to make ripples</span>
           <span className="hint-fine">Move or click for ripples</span>
         </div>
-        <WaterPoster labelled />
+        <WaterCanvasLoader />
       </div>
     </section>
   );
