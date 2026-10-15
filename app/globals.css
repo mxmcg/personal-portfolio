@@ -33,6 +33,25 @@
   --water-bot: #216170;
   --water-streak: #ffdbad;
   --water-sun-y: 11%;
+  --s-far: #e2b39c;
+  --s-cliff: #c4876c;
+  --s-cliff2: #a86a56;
+  --s-strata: #d9a185;
+  --s-dark: #2f5658;
+  --s-gold: #f5cf8f;
+  --s-plant: #6c9a72;
+  --s-plant2: #d27a92;
+  --s-sand: #f3d9bf;
+  --s-foam: #fbf3ea;
+  --s-green: #5f9a7f;
+  --s-green2: #4c8570;
+  --s-wood: #b98457;
+  --s-wood2: #8a5a3a;
+  --s-path: #ead9c6;
+  --s-trunk: #7a5a48;
+  --s-frond: #3f6f58;
+  --s-roof: #c8704f;
+  --s-wall: #fbf3ea;
   color-scheme: light;
 }
 
@@ -67,6 +86,25 @@
     --water-bot: #121733;
     --water-streak: #ffb24c;
     --water-sun-y: 22%;
+    --s-far: #2b355c;
+    --s-cliff: #3c3658;
+    --s-cliff2: #2c2a4a;
+    --s-strata: #4d4366;
+    --s-dark: #121831;
+    --s-gold: #f2b25c;
+    --s-plant: #2c4a4c;
+    --s-plant2: #7c405c;
+    --s-sand: #4b3d55;
+    --s-foam: #f2c48a;
+    --s-green: #24384c;
+    --s-green2: #1c2d40;
+    --s-wood: #5a4560;
+    --s-wood2: #3e3050;
+    --s-path: #4a4560;
+    --s-trunk: #2a2440;
+    --s-frond: #1a2a3c;
+    --s-roof: #a85a4a;
+    --s-wall: #c9b8b0;
     color-scheme: dark;
   }
 }
@@ -101,6 +139,25 @@
   --water-bot: #216170;
   --water-streak: #ffdbad;
   --water-sun-y: 11%;
+  --s-far: #e2b39c;
+  --s-cliff: #c4876c;
+  --s-cliff2: #a86a56;
+  --s-strata: #d9a185;
+  --s-dark: #2f5658;
+  --s-gold: #f5cf8f;
+  --s-plant: #6c9a72;
+  --s-plant2: #d27a92;
+  --s-sand: #f3d9bf;
+  --s-foam: #fbf3ea;
+  --s-green: #5f9a7f;
+  --s-green2: #4c8570;
+  --s-wood: #b98457;
+  --s-wood2: #8a5a3a;
+  --s-path: #ead9c6;
+  --s-trunk: #7a5a48;
+  --s-frond: #3f6f58;
+  --s-roof: #c8704f;
+  --s-wall: #fbf3ea;
   color-scheme: light;
 }
 
@@ -134,6 +191,25 @@
   --water-bot: #121733;
   --water-streak: #ffb24c;
   --water-sun-y: 22%;
+  --s-far: #2b355c;
+  --s-cliff: #3c3658;
+  --s-cliff2: #2c2a4a;
+  --s-strata: #4d4366;
+  --s-dark: #121831;
+  --s-gold: #f2b25c;
+  --s-plant: #2c4a4c;
+  --s-plant2: #7c405c;
+  --s-sand: #4b3d55;
+  --s-foam: #f2c48a;
+  --s-green: #24384c;
+  --s-green2: #1c2d40;
+  --s-wood: #5a4560;
+  --s-wood2: #3e3050;
+  --s-path: #4a4560;
+  --s-trunk: #2a2440;
+  --s-frond: #1a2a3c;
+  --s-roof: #a85a4a;
+  --s-wall: #c9b8b0;
   color-scheme: dark;
 }
 
@@ -441,8 +517,14 @@ html:not([data-theme]) .show-in-sunset {
   color: var(--coral);
 }
 
+.heroviz {
+  display: flex;
+  flex-direction: column;
+}
+
 .playground {
   position: relative;
+  isolation: isolate;
   overflow: hidden;
   border-radius: 20px;
   border: 1px solid var(--line);
@@ -455,13 +537,40 @@ html:not([data-theme]) .show-in-sunset {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 2;
+  z-index: 3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
   padding: 12px 14px;
   font-size: 11px;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.92);
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.28), transparent);
   pointer-events: none;
+}
+
+.playground-hints,
+.beach-cap {
+  white-space: nowrap;
+}
+
+.beach-cap {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-align: right;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+.beach-cap span {
+  display: none;
+}
+
+html[data-beach="swamis"] .beach-cap [data-b="swamis"],
+html:not([data-beach]) .beach-cap [data-b="swamis"],
+html[data-beach="grandview"] .beach-cap [data-b="grandview"],
+html[data-beach="shipwrecks"] .beach-cap [data-b="shipwrecks"] {
+  display: inline;
 }
 
 .hint-fine {
@@ -524,6 +633,94 @@ html:not([data-theme]) .show-in-sunset {
 
 .water-stage {
   position: relative;
+  z-index: 0;
+}
+
+.scene {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.scene .beach {
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+
+html[data-beach="swamis"] .scene .beach[data-b="swamis"],
+html:not([data-beach]) .scene .beach[data-b="swamis"],
+html[data-beach="grandview"] .scene .beach[data-b="grandview"],
+html[data-beach="shipwrecks"] .scene .beach[data-b="shipwrecks"] {
+  opacity: 1;
+}
+
+.scene path,
+.scene rect,
+.scene polygon,
+.scene circle {
+  transition:
+    fill 0.6s ease,
+    stroke 0.6s ease;
+}
+
+.beaches {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.beach-seg {
+  display: inline-flex;
+  gap: 2px;
+  max-width: 100%;
+  padding: 3px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--card);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.beach-seg button {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 12.5px;
+  padding: 7px 14px;
+  min-height: 34px;
+  border-radius: 999px;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition:
+    background 0.25s,
+    color 0.25s;
+}
+
+html[data-beach="swamis"] .beach-seg [data-b="swamis"],
+html:not([data-beach]) .beach-seg [data-b="swamis"],
+html[data-beach="grandview"] .beach-seg [data-b="grandview"],
+html[data-beach="shipwrecks"] .beach-seg [data-b="shipwrecks"] {
+  background: var(--btn);
+  color: var(--btn-text);
+}
+
+.beach-seg button:focus-visible {
+  outline: 2px solid var(--coral);
+  outline-offset: 2px;
+}
+
+@media (max-width: 639px) {
+  .beach-seg button {
+    padding: 8px 12px;
+    min-height: 40px;
+    font-size: 13px;
+  }
 }
 
 .water-stage .water-canvas {
@@ -846,7 +1043,7 @@ html:not([data-theme]) .show-in-sunset {
     transform: none !important;
   }
 
-  .playground-bar {
+  .playground-hints {
     display: none;
   }
 }

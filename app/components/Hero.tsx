@@ -1,5 +1,8 @@
 import { site } from "@/content/site";
 import { ResumeLink } from "./ResumeLink";
+import { BeachCaption } from "./water/BeachCaption";
+import { BeachScene } from "./water/BeachScene";
+import { BeachLive, BeachProvider, BeachSwitcher } from "./water/BeachControl";
 import { WaterCanvasLoader } from "./water/WaterCanvasLoader";
 
 export function Hero() {
@@ -18,13 +21,23 @@ export function Hero() {
           <a href="#contact">{site.contactCta}</a>
         </div>
       </div>
-      <div className="playground">
-        <div className="playground-bar" aria-hidden="true">
-          <span className="hint-coarse">Tap to make ripples</span>
-          <span className="hint-fine">Move or click for ripples</span>
+      <BeachProvider>
+        <div className="heroviz">
+          <div className="playground">
+            <div className="playground-bar">
+              <span className="playground-hints" aria-hidden="true">
+                <span className="hint-coarse">Tap to make ripples</span>
+                <span className="hint-fine">Move or click for ripples</span>
+              </span>
+              <BeachCaption />
+              <BeachLive />
+            </div>
+            <WaterCanvasLoader />
+            <BeachScene />
+          </div>
+          <BeachSwitcher />
         </div>
-        <WaterCanvasLoader />
-      </div>
+      </BeachProvider>
     </section>
   );
 }

@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { DM_Sans, Fraunces } from "next/font/google";
 import { site, siteUrl } from "@/content/site";
+import { beachInitScript } from "./lib/beach-script";
 import { themeInitScript } from "./lib/theme-script";
 import "./globals.css";
 
@@ -87,6 +88,7 @@ export default function RootLayout({
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        <script dangerouslySetInnerHTML={{ __html: beachInitScript }} />
       </head>
       <body>{children}</body>
     </html>
