@@ -66,7 +66,7 @@ export function WaterCanvas() {
     });
     themeObserver.observe(document.documentElement, {
       attributes: true,
-      attributeFilter: ["data-theme"],
+      attributeFilter: ["data-theme", "data-beach"],
     });
 
     sync();

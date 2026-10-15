@@ -1,3 +1,12 @@
+import {
+  beachById,
+  beachCrossfadeMs,
+  defaultBeachId,
+  isBeachId,
+  reefWater,
+  type BeachId,
+  type BeachMotion,
+} from "@/content/beaches";
 import { drawShader, simShader, vertexShader } from "./shaders";
 
 export type WaterEngine = {
@@ -51,6 +60,85 @@ function themeName(): "sunrise" | "sunset" {
   return document.documentElement.dataset.theme === "sunset"
     ? "sunset"
     : "sunrise";
+}
+
+function beachId(): BeachId {
+  const value = document.documentElement.dataset.beach;
+  return isBeachId(value) ? value : defaultBeachId;
+}
+
+function motionOf(id: BeachId): BeachMotion {
+  const beach = beachById(id);
+  return {
+    slope: beach.slope,
+    gap: beach.gap,
+    peel: beach.peel,
+    tint: beach.tint,
+  };
+}
+
+function mix(from: number, to: number, amount: number) {
+  return from + (to - from) * amount;
+}
+
+function mixColor(from: Vec3, to: Vec3, amount: number): Vec3 {
+  return [
+    mix(from[0], to[0], amount),
+    mix(from[1], to[1], amount),
+    mix(from[2], to[2], amount),
+  ];
+}
+
+function createBeachBlend(reducedMotion: boolean) {
+  let id = beachId();
+  let from = motionOf(id);
+  let to = motionOf(id);
+  let started = 0;
+
+  function sample(): BeachMotion {
+    const next = beachId();
+    const now = performance.now();
+    if (next !== id) {
+      const elapsed = Math.min(1, (now - started) / beachCrossfadeMs);
+      const eased = elapsed * elapsed * (3 - 2 * elapsed);
+      from = {
+        slope: mix(from.slope, to.slope, eased),
+        gap: mix(from.gap, to.gap, eased),
+        peel: mix(from.peel, to.peel, eased),
+        tint: mix(from.tint, to.tint, eased),
+      };
+      to = motionOf(next);
+      started = now;
+      id = next;
+      if (reducedMotion) from = to;
+    }
+    const elapsed = reducedMotion
+      ? 1
+      : Math.min(1, (now - started) / beachCrossfadeMs);
+    const eased = elapsed * elapsed * (3 - 2 * elapsed);
+    return {
+      slope: mix(from.slope, to.slope, eased),
+      gap: mix(from.gap, to.gap, eased),
+      peel: mix(from.peel, to.peel, eased),
+      tint: mix(from.tint, to.tint, eased),
+    };
+  }
+
+  function paint(theme: WaterTheme) {
+    const beach = sample();
+    const reef = reefWater[themeName()];
+    const amount = beach.tint * 0.75;
+    return {
+      ...theme,
+      top: mixColor(theme.top, reef.top, amount),
+      bot: mixColor(theme.bot, reef.bot, amount),
+      slope: beach.slope,
+      gap: beach.gap,
+      peel: beach.peel,
+    };
+  }
+
+  return { paint };
 }
 
 function pixelRatio() {
@@ -181,6 +269,10 @@ function createWebGLWater(
   const drawGlow = gl.getUniformLocation(draw, "glow");
   const drawRingK = gl.getUniformLocation(draw, "ringK");
   const drawSunY = gl.getUniformLocation(draw, "sunY");
+  const drawSlope = gl.getUniformLocation(draw, "slope");
+  const drawGap = gl.getUniformLocation(draw, "gap");
+  const drawPeel = gl.getUniformLocation(draw, "peel");
+  const blend = createBeachBlend(reducedMotion);
   const drawVecs = {
     top: gl.getUniformLocation(draw, "top"),
     bot: gl.getUniformLocation(draw, "bot"),
@@ -297,7 +389,7 @@ function createWebGLWater(
 
   function render() {
     if (simW === 0) resize();
-    const theme = THEMES[themeName()];
+    const theme = blend.paint(THEMES[themeName()]);
     bindGeometry();
     gl.useProgram(draw);
     gl.bindFramebuffer(gl.FRAMEBUFFER, null);
@@ -309,6 +401,9 @@ function createWebGLWater(
     gl.uniform1f(drawGlow, theme.glow);
     gl.uniform1f(drawRingK, isSmall() ? 11 : 24);
     gl.uniform1f(drawSunY, theme.sunY);
+    gl.uniform1f(drawSlope, theme.slope);
+    gl.uniform1f(drawGap, theme.gap);
+    gl.uniform1f(drawPeel, theme.peel);
     (Object.keys(drawVecs) as Array<keyof typeof drawVecs>).forEach((key) => {
       const value = theme[key];
       gl.uniform3f(drawVecs[key], value[0], value[1], value[2]);

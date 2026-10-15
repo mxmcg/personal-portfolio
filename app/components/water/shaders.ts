@@ -48,6 +48,9 @@ uniform vec3 sky1;
 uniform vec3 sky2;
 uniform vec3 streak;
 uniform float ringK;
+uniform float slope;
+uniform float gap;
+uniform float peel;
 float hash(vec2 p) {
   return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453);
 }
@@ -84,9 +87,13 @@ void main() {
       float fi = float(i);
       float base = hz + 0.07 + fi * 0.13 + fi * fi * 0.012;
       float ly = base
+        + (r.x - 0.5) * slope * (0.6 + fi * 0.35)
         + sin(r.x * aspect * 4.0 + t * (0.4 + fi * 0.07) + fi * 1.9) * 0.010
         + sin(r.x * aspect * 9.0 - t * 0.3 + fi) * 0.004;
-      float len = step(0.25, fract(r.x * (1.6 + fi * 0.4) + fi * 0.37 + t * 0.01));
+      float len = step(
+        gap,
+        fract(r.x * (1.6 + fi * 0.4) + fi * 0.37 + t * (0.01 + peel))
+      );
       col = mix(col, line, (1.0 - smoothstep(0.0, aa * 0.9, abs(y - ly))) * len * 0.55);
     }
     float fw = max(fwidth(h), 0.00001) * 1.0;
