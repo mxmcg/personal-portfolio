@@ -14,7 +14,7 @@ export function About() {
           alt={site.photo.alt}
           width={site.photo.width}
           height={site.photo.height}
-          sizes="160px"
+          sizes="112px"
           className="about-photo"
         />
       </div>

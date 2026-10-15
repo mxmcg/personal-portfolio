@@ -786,9 +786,9 @@ html[data-beach="shipwrecks"] .beach-seg [data-b="shipwrecks"] {
 }
 
 .about-photo {
-  width: 160px;
-  height: 200px;
-  border-radius: 16px;
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
   border: 1px solid var(--line);
   object-fit: cover;
 }
@@ -1020,7 +1020,7 @@ html[data-beach="shipwrecks"] .beach-seg [data-b="shipwrecks"] {
   }
 
   .about-grid {
-    grid-template-columns: 1fr 160px;
+    grid-template-columns: 1fr 112px;
     align-items: start;
     gap: 20px;
   }

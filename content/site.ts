@@ -17,10 +17,10 @@ export const site = {
   about:
     "I build web and mobile applications for Fortune 500 retail brands and global enterprises, specializing in React, React Native, and headless CMS architectures. Beyond engineering, I architect solutions, manage cross-functional teams, and collaborate directly with stakeholders and clients.",
   photo: {
-    src: "/profile.jpg",
-    alt: "Max McGee standing on a beach",
-    width: 160,
-    height: 200,
+    src: "/headshot.jpg",
+    alt: "Max McGee",
+    width: 112,
+    height: 112,
   },
   /**
    * Placeholder. Point href at a file in /public (for example "/resume.pdf")
