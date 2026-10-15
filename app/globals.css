@@ -473,13 +473,30 @@ html:not([data-theme]) .show-in-sunset {
   margin-bottom: 28px;
 }
 
-.hero h1 {
+.hero-id {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 16px;
   margin: 0 0 10px;
+}
+
+.hero h1 {
+  margin: 0;
   font-size: clamp(36px, 10vw, 56px);
   font-weight: 700;
   line-height: 1.08;
   letter-spacing: -0.025em;
   color: var(--ocean-deep);
+}
+
+.hero-photo {
+  width: 72px;
+  height: 72px;
+  flex: none;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  object-fit: cover;
 }
 
 .role {
@@ -773,24 +790,11 @@ html[data-beach="shipwrecks"] .beach-seg [data-b="shipwrecks"] {
   color: var(--ocean-deep);
 }
 
-.about-grid {
-  display: grid;
-  gap: 16px;
-}
-
 .about-copy {
   margin: 0;
   color: var(--muted);
   font-size: 15px;
   line-height: 1.7;
-}
-
-.about-photo {
-  width: 112px;
-  height: 112px;
-  border-radius: 50%;
-  border: 1px solid var(--line);
-  object-fit: cover;
 }
 
 .xlabel {
@@ -1000,15 +1004,14 @@ html[data-beach="shipwrecks"] .beach-seg [data-b="shipwrecks"] {
     align-items: center;
   }
 
+  .hero-photo {
+    width: 88px;
+    height: 88px;
+  }
+
   .water-poster,
   .water-canvas {
     height: 320px;
-  }
-
-  .about-grid {
-    grid-template-columns: 1fr 112px;
-    align-items: start;
-    gap: 20px;
   }
 }
 
