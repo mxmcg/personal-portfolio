@@ -17,7 +17,8 @@ export const site = {
   logo: "max.mcgee",
   role: "Senior Full Stack Engineer, San Diego.",
   summary: intro,
-  about: intro,
+  about:
+    "I build web and mobile products from first prototype through launch. Most of my work is React and React Native on top of headless CMS, and I often lead the client side of engineering: running demos, scoping and estimating the work, and making sure what we ship holds up after launch.",
   photo: {
     src: "/headshot.jpg",
     alt: "Max McGee",
