@@ -53,6 +53,7 @@
   --s-roof: #c8704f;
   --s-wall: #fbf3ea;
   --card-radius: 20px;
+  --section-gap: 44px;
   color-scheme: light;
 }
 
@@ -471,7 +472,7 @@ html:not([data-theme]) .show-in-sunset {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  margin-bottom: 28px;
+  margin-bottom: var(--section-gap);
 }
 
 .hero-id {
@@ -737,6 +738,10 @@ html[data-beach="shipwrecks"] .beach-seg [data-b="shipwrecks"] {
 }
 
 @media (max-width: 639px) {
+  .hero {
+    margin-bottom: 0;
+  }
+
   .beach-seg button {
     padding: 8px 12px;
     min-height: 40px;
@@ -757,12 +762,18 @@ html[data-beach="shipwrecks"] .beach-seg [data-b="shipwrecks"] {
   display: flex;
   justify-content: space-between;
   gap: 4px;
-  margin: 0 -20px 20px;
+  margin: 0 -20px 0;
   padding: 8px 20px;
   background: color-mix(in srgb, var(--sand) 82%, transparent);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--line);
+}
+
+@media (max-width: 639px) {
+  .mnav {
+    margin-bottom: var(--section-gap);
+  }
 }
 
 .mnav a {
@@ -783,7 +794,7 @@ html[data-beach="shipwrecks"] .beach-seg [data-b="shipwrecks"] {
 
 .sec {
   max-width: 680px;
-  margin: 0 0 44px;
+  margin: 0 0 var(--section-gap);
   scroll-margin-top: 4.75rem;
 }
 
@@ -894,7 +905,7 @@ html[data-beach="shipwrecks"] .beach-seg [data-b="shipwrecks"] {
   color: var(--muted);
   opacity: 0.8;
   text-align: left;
-  padding: 28px 0 80px;
+  padding: 0 0 80px;
 }
 
 .ridge {
