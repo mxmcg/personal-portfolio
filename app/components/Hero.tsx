@@ -18,7 +18,7 @@ export function Hero() {
             alt={site.photo.alt}
             width={site.photo.width}
             height={site.photo.height}
-            sizes="(min-width: 768px) 72px, 56px"
+            sizes="(min-width: 768px) 140px, 96px"
             className="hero-photo"
             priority
             fetchPriority="high"
