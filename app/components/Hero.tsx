@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { site } from "@/content/site";
 import { ResumeLink } from "./ResumeLink";
 import { BeachCaption } from "./water/BeachCaption";
@@ -20,6 +21,16 @@ export function Hero() {
           </ResumeLink>
           <a href="#contact">{site.contactCta}</a>
         </div>
+        <Image
+          src={site.photo.src}
+          alt={site.photo.alt}
+          width={site.photo.width}
+          height={site.photo.height}
+          sizes="140px"
+          className="hero-photo"
+          priority
+          fetchPriority="high"
+        />
       </div>
       <BeachProvider>
         <div className="heroviz">
