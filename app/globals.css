@@ -475,28 +475,8 @@ html:not([data-theme]) .show-in-sunset {
   margin-bottom: var(--section-gap);
 }
 
-.hero-id {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 12px;
-  margin: 0 0 10px;
-}
-
-.hero-photo {
-  width: 96px;
-  height: 96px;
-  flex: none;
-  border-radius: 50%;
-  border: 1px solid var(--line);
-  object-fit: cover;
-  object-position: center 22%;
-}
-
 .hero h1 {
-  margin: 0;
-  flex: 1 1 auto;
-  white-space: nowrap;
+  margin: 0 0 10px;
   font-size: clamp(36px, 10vw, 56px);
   font-weight: 700;
   line-height: 1.08;
@@ -805,6 +785,17 @@ html[data-beach="shipwrecks"] .beach-seg [data-b="shipwrecks"] {
   color: var(--ocean-deep);
 }
 
+.about-photo {
+  display: block;
+  width: 140px;
+  height: 140px;
+  margin: 0 0 16px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  object-fit: cover;
+  object-position: center top;
+}
+
 .about-copy {
   margin: 0;
   color: var(--muted);
@@ -1004,13 +995,6 @@ html[data-beach="shipwrecks"] .beach-seg [data-b="shipwrecks"] {
 
   .site-foot {
     padding-bottom: 24px;
-  }
-}
-
-@media (min-width: 768px) {
-  .hero-photo {
-    width: 140px;
-    height: 140px;
   }
 }
 
