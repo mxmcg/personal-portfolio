@@ -1038,33 +1038,50 @@ html[data-beach="shipwrecks"] .beach-seg [data-b="shipwrecks"] {
   }
 }
 
-/* header home mark H-c3: 24h day-cycle tile (own clock, theme-independent colors) */
-.home-mark { display: inline-flex; align-items: center; gap: 10px; border-radius: 12px; }
+/* header home mark: day-cycle scene, feathered into the page (own clock) */
+.home-mark {
+  display: inline-flex;
+  width: 65px;
+  height: 52px;
+  border-radius: 18px;
+  -webkit-mask-image: radial-gradient(ellipse 88% 80% at 48% 54%, #000 22%, transparent 72%);
+  mask-image: radial-gradient(ellipse 88% 80% at 48% 54%, #000 22%, transparent 72%);
+}
 .home-mark:focus-visible { outline: 2px solid var(--coral); outline-offset: 3px; }
-.hm { display: block; width: 44px; height: 44px; flex: none; }
+.hm {
+  display: block;
+  width: 100%;
+  height: 100%;
+  flex: none;
+}
 .hm * { transform-box: view-box; }
-.hm-edge { fill: none; stroke: var(--line); }
-.logo .hm-word { line-height: 1; color: inherit; }
-.hm-sky { fill: #1b2340; animation: hm-sky 24s linear infinite; }
-.hm-band1 { fill: #232c4d; animation: hm-band1 24s linear infinite; }
-.hm-band2 { fill: #2b3356; animation: hm-band2 24s linear infinite; }
-.hm-stars { animation: hm-stars 24s linear infinite; }
+.hm-sky { fill: #1b2340; animation: hm-sky 24s linear -12s infinite; }
+.hm-band1 { fill: #232c4d; animation: hm-band1 24s linear -12s infinite; }
+.hm-band2 { fill: #2b3356; animation: hm-band2 24s linear -12s infinite; }
+.hm-stars { animation: hm-stars 24s linear -12s infinite; }
 .hm-star { fill: #fbf3ea; animation: hm-twinkle 2.6s ease-in-out infinite; }
 .hm-star.t2 { animation-delay: -0.9s; }
 .hm-star.t3 { animation-delay: -1.7s; }
 .hm-sunarc, .hm-moonarc { transform-origin: 20px 29.5px; }
-.hm-sunarc { animation: hm-sunarc 24s linear infinite; }
-.hm-moonarc { animation: hm-moonarc 24s linear infinite; }
+.hm-sunarc { animation: hm-sunarc 24s linear -12s infinite; }
+.hm-moonarc { animation: hm-moonarc 24s linear -12s infinite; }
 .hm-sun { fill: #f5cf8f; }
 .hm-sunglow { fill: #f5cf8f; opacity: 0.35; }
 .hm-moon { fill: #f3ead8; }
-.hm-mooncut { fill: #1b2340; animation: hm-sky 24s linear infinite; }
-.hm-hill { fill: #2c4a48; animation: hm-hill 24s linear infinite; }
-.hm-roof { fill: #c8704f; animation: hm-roof 24s linear infinite; }
-.hm-wall { fill: #fbf3ea; animation: hm-wall 24s linear infinite; }
-.hm-win { fill: #f5cf8f; animation: hm-win 24s linear infinite; }
-.hm-sea { fill: #14203a; animation: hm-sea 24s linear infinite; }
-.hm-wave { fill: #1d2c4c; animation: hm-wave-c 24s linear infinite, hm-roll 4s linear infinite; }
+.hm-mooncut { fill: #1b2340; animation: hm-sky 24s linear -12s infinite; }
+.hm-hill { fill: #2c4a48; animation: hm-hill 24s linear -12s infinite; }
+.hm-roof { fill: #c8704f; animation: hm-roof 24s linear -12s infinite; }
+.hm-wall { fill: #fbf3ea; animation: hm-wall 24s linear -12s infinite; }
+.hm-win { fill: #f5cf8f; animation: hm-win 24s linear -12s infinite; }
+.hm-sea { fill: #14203a; animation: hm-sea 24s linear -12s infinite; }
+.hm-wave { fill: #1d2c4c; animation: hm-wave-c 24s linear -12s infinite, hm-roll 4s linear infinite; }
+
+@media (min-width: 640px) {
+  .home-mark {
+    width: 80px;
+    height: 64px;
+  }
+}
 
 /* 0% = midnight, 25% = 6am, 50% = noon, 75% = 6pm */
 @keyframes hm-sky {
@@ -1103,16 +1120,12 @@ html[data-beach="shipwrecks"] .beach-seg [data-b="shipwrecks"] {
 }
 @keyframes hm-roll { from { transform: translateX(0); } to { transform: translateX(10px); } }
 
-/* Reduced motion: hold one frame that matches the site theme (dawn for Sunrise, sunset for Sunset). */
+/* Reduced motion: hold midday, the same frame the cycle starts on. */
 @media (prefers-reduced-motion: reduce) {
   .hm * {
     animation-duration: 24s !important;
     animation-iteration-count: infinite !important;
     animation-play-state: paused !important;
-    animation-delay: -7.2s !important;
+    animation-delay: -12s !important;
   }
-  [data-theme="sunset"] .hm * { animation-delay: -18s !important; }
-}
-@media (prefers-reduced-motion: reduce) and (prefers-color-scheme: dark) {
-  :root:not([data-theme="sunrise"]) .hm * { animation-delay: -18s !important; }
 }
