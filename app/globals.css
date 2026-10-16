@@ -1003,7 +1003,7 @@ html[data-beach="shipwrecks"] .beach-seg [data-b="shipwrecks"] {
     display: grid;
     grid-template-columns: 1fr 1.05fr;
     gap: 36px;
-    align-items: center;
+    align-items: start;
   }
 
   .water-poster,
