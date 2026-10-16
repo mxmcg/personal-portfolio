@@ -22,8 +22,8 @@ export const site = {
   photo: {
     src: "/headshot.jpg",
     alt: "Max McGee",
-    width: 240,
-    height: 300,
+    width: 140,
+    height: 140,
   },
   /**
    * Placeholder. Point href at a file in /public (for example "/resume.pdf")

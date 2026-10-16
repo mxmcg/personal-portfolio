@@ -774,17 +774,6 @@ html[data-beach="shipwrecks"] .beach-seg [data-b="shipwrecks"] {
   color: var(--ocean-deep);
 }
 
-.about {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-}
-
-.about-main {
-  width: 100%;
-}
-
 .about-copy {
   margin: 0;
   color: var(--muted);
@@ -792,37 +781,15 @@ html[data-beach="shipwrecks"] .beach-seg [data-b="shipwrecks"] {
   line-height: 1.7;
 }
 
-.about-photo-frame {
-  position: relative;
-  width: 180px;
-  aspect-ratio: 4 / 5;
-  flex: none;
-  overflow: hidden;
-  border-radius: var(--card-radius);
-  border: 1px solid var(--line);
-  background: color-mix(in srgb, var(--sand-deep) 78%, var(--coral));
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
-}
-
 .about-photo {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  display: block;
+  width: 120px;
+  height: 120px;
+  margin: 0 0 16px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
   object-fit: cover;
-  object-position: center 30%;
-  transform: scale(2.05);
-  transform-origin: center 30%;
-  filter: sepia(0.1) saturate(0.95);
-}
-
-.about-photo-wash {
-  position: absolute;
-  inset: 0;
-  background: color-mix(in srgb, var(--coral) 42%, var(--water-sky2));
-  mix-blend-mode: soft-light;
-  opacity: 0.42;
-  pointer-events: none;
+  object-position: center 22%;
 }
 
 .xlabel {
@@ -1021,18 +988,9 @@ html[data-beach="shipwrecks"] .beach-seg [data-b="shipwrecks"] {
 }
 
 @media (min-width: 768px) {
-  .about {
-    display: grid;
-    grid-template-columns: 240px minmax(0, 1fr);
-    column-gap: 24px;
-    align-items: stretch;
-    justify-items: stretch;
-  }
-
-  .about-photo-frame {
-    width: auto;
-    height: 100%;
-    aspect-ratio: auto;
+  .about-photo {
+    width: 140px;
+    height: 140px;
   }
 }
 
