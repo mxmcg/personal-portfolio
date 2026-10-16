@@ -52,6 +52,7 @@
   --s-frond: #3f6f58;
   --s-roof: #c8704f;
   --s-wall: #fbf3ea;
+  --card-radius: 20px;
   color-scheme: light;
 }
 
@@ -473,30 +474,13 @@ html:not([data-theme]) .show-in-sunset {
   margin-bottom: 28px;
 }
 
-.hero-id {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 16px;
-  margin: 0 0 10px;
-}
-
 .hero h1 {
-  margin: 0;
+  margin: 0 0 10px;
   font-size: clamp(36px, 10vw, 56px);
   font-weight: 700;
   line-height: 1.08;
   letter-spacing: -0.025em;
   color: var(--ocean-deep);
-}
-
-.hero-photo {
-  width: 72px;
-  height: 72px;
-  flex: none;
-  border-radius: 50%;
-  border: 1px solid var(--line);
-  object-fit: cover;
 }
 
 .role {
@@ -543,7 +527,7 @@ html:not([data-theme]) .show-in-sunset {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  border-radius: 20px;
+  border-radius: var(--card-radius);
   border: 1px solid var(--line);
   background: var(--card);
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
@@ -790,11 +774,45 @@ html[data-beach="shipwrecks"] .beach-seg [data-b="shipwrecks"] {
   color: var(--ocean-deep);
 }
 
+.about {
+  display: grid;
+  justify-items: start;
+  gap: 14px;
+}
+
+.about-main {
+  display: contents;
+}
+
+.about h2 {
+  margin: 0;
+  order: 1;
+}
+
 .about-copy {
+  order: 3;
   margin: 0;
   color: var(--muted);
   font-size: 15px;
   line-height: 1.7;
+}
+
+.about .xlabel {
+  order: 4;
+}
+
+.about .tags {
+  order: 5;
+}
+
+.about-photo {
+  width: 168px;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  order: 2;
+  border-radius: var(--card-radius);
+  border: 1px solid var(--line);
+  object-fit: cover;
 }
 
 .xlabel {
@@ -1004,9 +1022,26 @@ html[data-beach="shipwrecks"] .beach-seg [data-b="shipwrecks"] {
     align-items: center;
   }
 
-  .hero-photo {
-    width: 88px;
-    height: 88px;
+  .about {
+    max-width: none;
+    grid-template-columns: 1fr 1.05fr;
+    column-gap: 36px;
+    align-items: start;
+  }
+
+  .about-main {
+    display: block;
+    grid-column: 1;
+  }
+
+  .about h2 {
+    margin: 0 0 14px;
+  }
+
+  .about-photo {
+    order: 0;
+    grid-column: 2;
+    width: 240px;
   }
 
   .water-poster,
