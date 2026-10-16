@@ -1037,3 +1037,82 @@ html[data-beach="shipwrecks"] .beach-seg [data-b="shipwrecks"] {
     display: none;
   }
 }
+
+/* header home mark H-c3: 24h day-cycle tile (own clock, theme-independent colors) */
+.home-mark { display: inline-flex; align-items: center; gap: 10px; border-radius: 12px; }
+.home-mark:focus-visible { outline: 2px solid var(--coral); outline-offset: 3px; }
+.hm { display: block; width: 44px; height: 44px; flex: none; }
+.hm * { transform-box: view-box; }
+.hm-edge { fill: none; stroke: var(--line); }
+.logo .hm-word { line-height: 1; color: inherit; }
+.hm-sky { fill: #1b2340; animation: hm-sky 24s linear infinite; }
+.hm-band1 { fill: #232c4d; animation: hm-band1 24s linear infinite; }
+.hm-band2 { fill: #2b3356; animation: hm-band2 24s linear infinite; }
+.hm-stars { animation: hm-stars 24s linear infinite; }
+.hm-star { fill: #fbf3ea; animation: hm-twinkle 2.6s ease-in-out infinite; }
+.hm-star.t2 { animation-delay: -0.9s; }
+.hm-star.t3 { animation-delay: -1.7s; }
+.hm-sunarc, .hm-moonarc { transform-origin: 20px 29.5px; }
+.hm-sunarc { animation: hm-sunarc 24s linear infinite; }
+.hm-moonarc { animation: hm-moonarc 24s linear infinite; }
+.hm-sun { fill: #f5cf8f; }
+.hm-sunglow { fill: #f5cf8f; opacity: 0.35; }
+.hm-moon { fill: #f3ead8; }
+.hm-mooncut { fill: #1b2340; animation: hm-sky 24s linear infinite; }
+.hm-hill { fill: #2c4a48; animation: hm-hill 24s linear infinite; }
+.hm-roof { fill: #c8704f; animation: hm-roof 24s linear infinite; }
+.hm-wall { fill: #fbf3ea; animation: hm-wall 24s linear infinite; }
+.hm-win { fill: #f5cf8f; animation: hm-win 24s linear infinite; }
+.hm-sea { fill: #14203a; animation: hm-sea 24s linear infinite; }
+.hm-wave { fill: #1d2c4c; animation: hm-wave-c 24s linear infinite, hm-roll 4s linear infinite; }
+
+/* 0% = midnight, 25% = 6am, 50% = noon, 75% = 6pm */
+@keyframes hm-sky {
+  0%, 18% { fill: #1b2340; } 24% { fill: #d9b3c8; } 30% { fill: #f0d4dc; }
+  38%, 62% { fill: #b9dcd7; } 70% { fill: #f2b66a; } 76% { fill: #e9773f; }
+  82% { fill: #5a4468; } 88%, 100% { fill: #1b2340; }
+}
+@keyframes hm-band1 {
+  0%, 18% { fill: #232c4d; } 24% { fill: #e6a9bf; } 30% { fill: #f2c6d0; }
+  38%, 62% { fill: #a8d3cf; } 70% { fill: #ee9a4c; } 76% { fill: #dc5f2e; }
+  82% { fill: #6b4a6a; } 88%, 100% { fill: #232c4d; }
+}
+@keyframes hm-band2 {
+  0%, 18% { fill: #2b3356; } 24% { fill: #e99fb0; } 30% { fill: #efb8c2; }
+  38%, 62% { fill: #97c9c6; } 70% { fill: #e8833a; } 76% { fill: #c94a26; }
+  82% { fill: #7a4c66; } 88%, 100% { fill: #2b3356; }
+}
+@keyframes hm-stars { 0%, 18% { opacity: 1; } 24%, 80% { opacity: 0; } 88%, 100% { opacity: 1; } }
+@keyframes hm-twinkle { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+@keyframes hm-sunarc { from { transform: rotate(-180deg); } to { transform: rotate(180deg); } }
+@keyframes hm-moonarc { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes hm-hill {
+  0%, 18% { fill: #2c4a48; } 28% { fill: #5f8f74; } 38%, 62% { fill: #5f9a7f; }
+  74% { fill: #6b8a62; } 84%, 100% { fill: #2c4a48; }
+}
+@keyframes hm-roof { 0%, 18% { fill: #6e4a44; } 30%, 72% { fill: #c8704f; } 84%, 100% { fill: #6e4a44; } }
+@keyframes hm-wall { 0%, 18% { fill: #8e8a98; } 30%, 72% { fill: #fbf3ea; } 84%, 100% { fill: #8e8a98; } }
+@keyframes hm-win { 0%, 20% { fill: #ffd27a; } 27%, 72% { fill: #b9c4c4; } 79%, 100% { fill: #ffd27a; } }
+@keyframes hm-sea {
+  0%, 18% { fill: #14203a; } 26% { fill: #3b6a84; } 38%, 62% { fill: #2f7f8f; }
+  72% { fill: #2f6680; } 82% { fill: #1f3150; } 88%, 100% { fill: #14203a; }
+}
+@keyframes hm-wave-c {
+  0%, 18% { fill: #1d2c4c; } 26% { fill: #4d7f96; } 38%, 62% { fill: #3f93a0; }
+  72% { fill: #3d7891; } 82% { fill: #2a3d5e; } 88%, 100% { fill: #1d2c4c; }
+}
+@keyframes hm-roll { from { transform: translateX(0); } to { transform: translateX(10px); } }
+
+/* Reduced motion: hold one frame that matches the site theme (dawn for Sunrise, sunset for Sunset). */
+@media (prefers-reduced-motion: reduce) {
+  .hm * {
+    animation-duration: 24s !important;
+    animation-iteration-count: infinite !important;
+    animation-play-state: paused !important;
+    animation-delay: -7.2s !important;
+  }
+  [data-theme="sunset"] .hm * { animation-delay: -18s !important; }
+}
+@media (prefers-reduced-motion: reduce) and (prefers-color-scheme: dark) {
+  :root:not([data-theme="sunrise"]) .hm * { animation-delay: -18s !important; }
+}
