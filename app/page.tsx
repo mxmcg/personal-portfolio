@@ -1,36 +1,61 @@
-import { Sidebar } from "./components/Sidebar";
-// import { ChatInterface } from "./components/ChatInterface";
-import { AboutSection } from "./components/AboutSection";
-import { ExperienceSection } from "./components/ExperienceSection";
-import { SkillsSection } from "./components/SkillsSection";
-import { ProjectsSection } from "./components/ProjectsSection";
-import { ContactSection } from "./components/ContactSection";
+import { site, siteUrl } from "@/content/site";
+import { About } from "./components/About";
+import { Contact } from "./components/Contact";
+import { Experience } from "./components/Experience";
+import { Footer } from "./components/Footer";
+import { Header } from "./components/Header";
+import { Hero } from "./components/Hero";
+import { MobileNav } from "./components/MobileNav";
+import { Now } from "./components/Now";
+import { Projects } from "./components/Projects";
+import { Ridgeline } from "./components/Ridgeline";
+import { SkipLink } from "./components/SkipLink";
+import { ThemeToggle } from "./components/ThemeToggle";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: site.name,
+  jobTitle: site.role,
+  url: siteUrl,
+  email: `mailto:${site.email}`,
+  image: `${siteUrl}${site.photo.src}`,
+  description: site.summary,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Vista",
+    addressRegion: "CA",
+    addressCountry: "US",
+  },
+  sameAs: [site.linkedin.href],
+};
 
 export default function Home() {
   return (
-    <div className="min-h-screen">
-      <div className="mx-auto max-w-screen-xl px-6 py-12 md:px-12 md:py-20 lg:px-24 lg:py-0">
-        <div className="lg:flex lg:justify-between lg:gap-4">
-          {/* Left Column - Sidebar (Desktop: Sticky, Mobile/Tablet: Header) */}
-          <aside className="lg:sticky lg:top-0 lg:flex lg:h-screen lg:w-1/2 lg:flex-col lg:justify-start lg:py-24">
-            <div className="lg:pr-16">
-              <Sidebar />
-              {/* <ChatInterface /> */}
-            </div>
-          </aside>
-
-          {/* Right Column - Scrollable Content */}
-          <main className="pt-12 lg:w-1/2 lg:py-24">
-            <div className="space-y-16 md:space-y-20 lg:space-y-24">
-              <AboutSection />
-              <ExperienceSection />
-              <ProjectsSection />
-              <SkillsSection />
-              <ContactSection />
-            </div>
-          </main>
-        </div>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
+      <SkipLink />
+      <div className="bg-wash" aria-hidden="true" />
+      <Ridgeline />
+      <div className="wrap" id="top">
+        <Header />
+        <main id="content">
+          <Hero />
+          <MobileNav />
+          <About />
+          <Experience />
+          <Projects />
+          <Now />
+          <Contact />
+        </main>
+        <Footer />
       </div>
-    </div>
+      <ThemeToggle variant="fab" />
+    </>
   );
 }

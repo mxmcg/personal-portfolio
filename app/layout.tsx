@@ -1,68 +1,57 @@
-import type { Metadata } from "next";
-import { Space_Grotesk, DM_Sans } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { DM_Sans, Fraunces } from "next/font/google";
+import { site, siteUrl } from "@/content/site";
+import { beachInitScript } from "./lib/beach-script";
+import { themeInitScript } from "./lib/theme-script";
 import "./globals.css";
-import { ThemeProvider } from "./components/ThemeProvider";
-import { SkipLink } from "./components/SkipLink";
 
-// Option 1: Space Grotesk (headings) + DM Sans (body)
-// Modern, geometric sans-serif pairing great for a dev profile
-const spaceGrotesk = Space_Grotesk({
+const fraunces = Fraunces({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-heading",
+  variable: "--font-fraunces",
+  weight: ["500", "600", "700"],
 });
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-body",
+  variable: "--font-dm-sans",
+  weight: ["400", "500", "600", "700"],
 });
 
-// Option 2: Poppins (headings) + Open Sans (body)
-// Uncomment these and swap in the className below for a cleaner, friendlier look
-// import { Poppins, Open_Sans } from "next/font/google";
-// const poppins = Poppins({
-//   subsets: ["latin"],
-//   weight: ["400", "500", "600", "700"],
-//   display: "swap",
-//   variable: "--font-heading",
-// });
-// const openSans = Open_Sans({
-//   subsets: ["latin"],
-//   display: "swap",
-//   variable: "--font-body",
-// });
+const title = `${site.name} — ${site.role}`;
 
 export const metadata: Metadata = {
-  title: "Max McGee - Senior Full Stack Engineer",
-  description:
-    "Senior Full Stack Engineer specializing in web and mobile applications for Fortune 500 brands and enterprise clients.",
+  metadataBase: new URL(siteUrl),
+  title,
+  description: site.summary,
+  applicationName: site.name,
+  authors: [{ name: site.name, url: siteUrl }],
+  creator: site.name,
   keywords: [
-    "full-stack developer",
-    "web developer",
+    "Max McGee",
+    "Senior Full Stack Engineer",
     "React",
     "Next.js",
     "TypeScript",
     "React Native",
-    "portfolio",
+    "headless CMS",
   ],
-  authors: [{ name: "Max McGee" }],
-  creator: "Max McGee",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://maxmcgee.com",
-    title: "Max McGee - Senior Full Stack Engineer",
-    description:
-      "Senior Full Stack Engineer specializing in web and mobile applications for Fortune 500 brands and enterprise clients.",
-    siteName: "Max McGee Portfolio",
+    url: siteUrl,
+    siteName: site.name,
+    title,
+    description: site.summary,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Max McGee - Senior Full Stack Engineer",
-    description:
-      "Senior Full Stack Engineer specializing in web and mobile applications for Fortune 500 brands and enterprise clients.",
-    creator: "@maxmcgee",
+    title,
+    description: site.summary,
   },
   robots: {
     index: true,
@@ -70,21 +59,21 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      "max-video-preview": -1,
       "max-image-preview": "large",
       "max-snippet": -1,
     },
   },
 };
 
-export function generateViewport() {
-  return {
-    themeColor: [
-      { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-      { media: "(prefers-color-scheme: dark)", color: "#0a192f" },
-    ],
-  };
-}
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#fcf4ec" },
+    { media: "(prefers-color-scheme: dark)", color: "#121a2e" },
+  ],
+};
 
 export default function RootLayout({
   children,
@@ -92,18 +81,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${spaceGrotesk.variable} ${dmSans.variable} antialiased`}>
-        <ThemeProvider
-          attribute="data-theme"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <SkipLink />
-          {children}
-        </ThemeProvider>
-      </body>
+    <html
+      lang="en"
+      className={`${fraunces.variable} ${dmSans.variable}`}
+      suppressHydrationWarning
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        <script dangerouslySetInnerHTML={{ __html: beachInitScript }} />
+      </head>
+      <body>{children}</body>
     </html>
   );
 }
