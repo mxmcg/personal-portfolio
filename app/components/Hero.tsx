@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { site } from "@/content/site";
 import { ResumeLink } from "./ResumeLink";
 import { BeachCaption } from "./water/BeachCaption";
@@ -11,7 +12,19 @@ export function Hero() {
   return (
     <section className="hero" aria-labelledby="home-title">
       <div>
-        <h1 id="home-title">{site.name}</h1>
+        <div className="hero-id">
+          <Image
+            src={site.photo.src}
+            alt={site.photo.alt}
+            width={site.photo.width}
+            height={site.photo.height}
+            sizes="(min-width: 768px) 72px, 56px"
+            className="hero-photo"
+            priority
+            fetchPriority="high"
+          />
+          <h1 id="home-title">{site.name}</h1>
+        </div>
         <p className="role">{site.role}</p>
         <p className="lede">{site.summary}</p>
         <div className="text-links">
