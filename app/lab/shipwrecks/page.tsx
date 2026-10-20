@@ -11,16 +11,18 @@ export const metadata: Metadata = {
 export default function ShipwrecksLab() {
   return (
     <main className="lab">
-      <div className="lab-stage">
-        <SurfLoop />
+      <header className="lab-bar">
         <Link href="/" className="lab-back">
           <span aria-hidden="true">←</span> Home
         </Link>
-        <p className="lab-cap">Shipwrecks · Poipu, Kauai</p>
-        <div className="lab-tools">
-          <ThemeToggle variant="nav" />
+        <ThemeToggle variant="nav" />
+      </header>
+      <figure className="lab-figure">
+        <div className="lab-frame">
+          <SurfLoop />
         </div>
-      </div>
+        <figcaption className="lab-cap">Shipwrecks · Poipu, Kauai</figcaption>
+      </figure>
     </main>
   );
 }

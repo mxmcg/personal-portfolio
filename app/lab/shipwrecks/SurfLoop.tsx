@@ -26,7 +26,7 @@ function readTheme(): Theme {
 }
 
 /**
- * Full-bleed surf loop that follows the Sunrise/Sunset theme.
+ * Framed surf loop that follows the Sunrise/Sunset theme.
  * Both posters render on the server and CSS shows the one for the current theme,
  * so the first paint is right before any script runs. The video mounts on the client
  * and is skipped entirely when reduced motion is requested.
