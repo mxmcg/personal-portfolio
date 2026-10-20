@@ -1129,3 +1129,114 @@ html[data-beach="shipwrecks"] .beach-seg [data-b="shipwrecks"] {
     animation-delay: -12s !important;
   }
 }
+
+/* /lab/shipwrecks: full-bleed surf loop (hidden lab page) */
+.lab {
+  margin: 0;
+}
+
+.lab-stage {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  background: #0b1424;
+}
+
+.lab-media,
+.lab-poster,
+.lab-poster img,
+.lab-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.lab-poster img,
+.lab-video {
+  object-fit: cover;
+  object-position: 50% 55%;
+}
+
+.lab-video {
+  z-index: 1;
+}
+
+.lab-stage::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  height: 96px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.3), transparent);
+  pointer-events: none;
+}
+
+.lab-back,
+.lab-cap {
+  position: absolute;
+  top: max(18px, env(safe-area-inset-top));
+  z-index: 3;
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+}
+
+.lab-back {
+  left: max(22px, env(safe-area-inset-left));
+  text-decoration: none;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.lab-back:hover,
+.lab-back:focus-visible {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.lab-cap {
+  right: max(22px, env(safe-area-inset-right));
+}
+
+.lab-tools {
+  position: absolute;
+  z-index: 3;
+  right: max(16px, env(safe-area-inset-right));
+  bottom: max(20px, env(safe-area-inset-bottom));
+}
+
+/* Homepage entry: the Shipwrecks caption doubles as a quiet link to the lab */
+.beach-cap a {
+  color: inherit;
+  text-decoration: none;
+  pointer-events: auto;
+  border-radius: 4px;
+}
+
+.beach-cap a .beach-cap-go {
+  display: inline;
+  margin-left: 4px;
+  opacity: 0.55;
+  transition: opacity 0.2s ease;
+}
+
+.beach-cap a:hover,
+.beach-cap a:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.beach-cap a:hover .beach-cap-go,
+.beach-cap a:focus-visible .beach-cap-go {
+  opacity: 1;
+}
